@@ -21,11 +21,11 @@ def remove_least(current_dict):
 # find the key with the corresponding min value.
     min_key = [key for key in current_dict if current_dict[key] == minimum]
 # remove that key. What if there are two? remove one, but the choice is random.
-
-    
+    current_dict.pop(min_key[0])
+    return current_dict
         
   
 
 
 current_dict = {'mem1': 1, 'mem2': 2}
-remove_least(current_dict)
+print(remove_least(current_dict))
