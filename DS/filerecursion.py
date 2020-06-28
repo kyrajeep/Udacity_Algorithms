@@ -4,7 +4,7 @@
 # We need recursion in joining all the path components in os since we are not using os.walk
  
 # Tasks: 1. Going through all the folders requires recursion or an iterative approach.
-# 2.somehow save the directories and files we have been to
+# 2.somehow save the directories and files we have been to. Do you think memoization would be necessary?
 import os
 
 def lsdirectory(ending, path, result):
