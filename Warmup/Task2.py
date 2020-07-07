@@ -20,22 +20,26 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-# I want to identify the longest time 
-# then match it with that call in a for loop.
+
+
 def combine(calls):
-# gets all the call duration into a list so that I can find the max
-    duration = []
+    # add a key to a dictionary
+# each time the phone number appears, increment the value.
+# input: calls data, output: phone number with the longest time.
+    duration = {}
     for call in calls:
-        duration.append(int(call[3]))
-    return max(duration)
+        number = 0
+        duration = funct(call, number, duration)
+        number = 1
+        duration = funct(call, number, duration)   
+    result_key = max(duration, key = lambda x: duration[x])
+    result_value = duration[result_key]
+    return result_key, result_value
 
-
-def identify(calls):
-# Purpose of the function: I can identify the index of the call that spent 
-# the longest time. 
-   
-    for i in range(len(calls)):
-        if int(calls[i][3]) == 4617:
-            return calls[i]
-    
-print(identify(calls)[0],"spent the longest time", identify(calls)[3], "seconds, on the phone during September 2016.")
+def funct(call, number, duration):
+    if call[number] not in duration.keys():
+        duration[call[number]] = int(call[3])
+    elif call[number] in duration.keys():
+        duration[call[number]] += int(call[3])
+    return duration    
+print(combine(calls)[0],"spent the longest time", combine(calls)[1], "seconds, on the phone during September 2016.")
