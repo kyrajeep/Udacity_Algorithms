@@ -24,24 +24,27 @@ def find_files(suffix, path):
     # if the path is a directory, go through its 
     #components
         if os.path.isdir(path):
+            # a list of sub-directories
             directory = os.listdir(path)
             #print(directory)
             dir_size = len(directory)
+            # go through each sub-directory
             for i in range(dir_size):
                 cur_path = os.path.join(path, directory[i])
+                # do the same previous steps for the subdirectory
                 find_files(suffix, cur_path)
                 
                     
-            return result
+        return result
        
 # comment to me: If you put a slash in front of the argument, it is considered an absolute path
 path = "/Users/kyra/Documents/GitHub/Udacity_Algorithms/DS/testdir"    
 
-#print(find_files('.c', path))
+print(find_files('.c', path))
 
 # test1: This is supposed to print three ipynb file paths.
 path = "/Users/kyra/Documents/GitHub/Udacity_Algorithms/Algos"    
 #print(find_files('.ipynb',path))
  
 # test2: Edge case - what if the output was an empty list?
-print(find_files('.c', path))
+#print(find_files('.c', path))
