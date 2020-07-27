@@ -34,11 +34,14 @@ def find_files(suffix, path):
                     
             return result
        
- # If you put a slash in front of the argument, it is considered an absolute path
+# comment to me: If you put a slash in front of the argument, it is considered an absolute path
 path = "/Users/kyra/Documents/GitHub/Udacity_Algorithms/DS/testdir"    
 
+#print(find_files('.c', path))
+
+# test1: This is supposed to print three ipynb file paths.
+path = "/Users/kyra/Documents/GitHub/Udacity_Algorithms/Algos"    
+#print(find_files('.ipynb',path))
+ 
+# test2: Edge case - what if the output was an empty list?
 print(find_files('.c', path))
-
-
-
-
