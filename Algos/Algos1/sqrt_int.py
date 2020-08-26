@@ -1,4 +1,3 @@
-#Udacity - Data Structure and Algorithms project
 def sqrt(number):
     """
     Calculate the floored square root of a number
@@ -9,12 +8,24 @@ def sqrt(number):
        int: Floored Square Root
     """
     # Thought process: I think this is a binary search problem. 
-    # You can start with numbers that are smaller, maybe even numbers smaller than half 
+    # You can start with numbers that smaller than or equal to half 
     # the integer as your search space.
-    pass
+    result = number/2
+    end = number
+    begin = 1
+    while abs(result**2 - number) > 0.5:
+        
+        if result**2 > number:
+            result = (begin + result)/2
+            
+        else:
+            result = (end + result)/2
+    return result
+    
 
-print ("Pass" if  (3 == sqrt(9)) else "Fail")
-print ("Pass" if  (0 == sqrt(0)) else "Fail")
-print ("Pass" if  (4 == sqrt(16)) else "Fail")
-print ("Pass" if  (1 == sqrt(1)) else "Fail")
-print ("Pass" if  (5 == sqrt(27)) else "Fail")
+#print ("Pass" if  (3 == sqrt(9)) else "Fail")
+#print ("Pass" if  (0 == sqrt(0)) else "Fail")
+#print ("Pass" if  (4 == sqrt(16)) else "Fail")
+#print ("Pass" if  (1 == sqrt(1)) else "Fail")
+#print ("Pass" if  (5 == sqrt(27)) else "Fail")
+print(sqrt(8))
