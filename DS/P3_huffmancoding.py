@@ -28,7 +28,7 @@ class node_huffman:
         counter = data.count(self.letter)
         self.weight = counter
         return counter
-
+'''
 class huffman_tree:
     # note to self: Does it make sense to build this with a list?
     def __init__(self):
@@ -54,38 +54,43 @@ class huffman_tree:
     def heapify():
         if self.root >= 
         
-        
+'''        
+# solution
 def huffman_encoding(data):
-    #input: a string
+    pass
+    #input: a string (data)
     #output: encoded data and its tree
     
     # convert the string into a list
-    list_node = createnode(data)
-
+    
     
     tree = huffman_tree()
     # sort data and make it into a tree
-    tree.append(createnode(data))
-    
-def createnode(data):
+    #tree.append(createnode(data))
+    return tree
+def create_node(data):
     #input: given data, usually a sentence
     #output: node objects used to build a tree
     data = list(data)
     letterlist = []
-    allnodes = list()
+    all_nodes = dict()
     for i in data:
         if i not in letterlist:
             letterlist.append(i)
-            i_node = node_huffman(str(i))
-            allnodes.append(i_node)
-        else:
-            #i.frequency += 1
-            #allnodes[i]+=1
+            # i-th node is in the all_nodes list
+            all_nodes[i] = node_huffman(str(i))
             
-    return allnodes
+        else:
+            cur_node = all_nodes[i]
+            cur_node.weight += 1
+            
+    return all_nodes, letterlist
+
+
 def huffman_decoding(data,tree):
     #output: decoded data
     pass
+
 data = 'I am a big giant tree'
 #print(createnode(data))
 '''
@@ -107,3 +112,4 @@ if __name__ == "__main__":
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
 '''
+print(create_node(data))
