@@ -8,37 +8,30 @@ import sys
 #a min heap is used as a priority queue to pop the 
 #smallest node at the root
 class node_huffman:
-    '''
-    The node class with the left and right child.
-    '''
-    def __init__(self,letter):
+    # a class for nodes
+    def __init__(self, letter):
         self.letter = letter   
         self.weight = 1
         self.left = None
         self.right = None
-    #def dummy():
-       # a test to see how this class is imported
-       
-       # print("hello, test")
-    def count(self,data):
-        pass
-        # this function counts how many times the letter
-        # appeared in the list. Assign the frequency to the 
-        # weight variable and return the frequency.
-        counter = data.count(self.letter)
-        self.weight = counter
-        return counter
-'''
+        
 class huffman_tree:
     # note to self: Does it make sense to build this with a list?
     def __init__(self):
         self.root = None
+        self.heap_l = []
     
-    def insert():
+    def insert(self, node):
         # the edges are represented as the children
+        if self.root is None:
+            self.root = node
+            self.heap_l.append(node)
+        else:
+            self.heap_l.append(node) 
         
     def remove():
-        
+        self.heap_l.pop(index = 0)
+        '''
         if self.root.left >= self.root.right:
             new_node_freq = self.root.frequency + self.root.right.frequency
         # how do you compare and reorganize the hierarchy effectively?
@@ -57,17 +50,23 @@ class huffman_tree:
 '''        
 # solution
 def huffman_encoding(data):
-    pass
+    
     #input: a string (data)
     #output: encoded data and its tree
     
-    # convert the string into a list
-    
-    
+    #convert the string into a list of nodes
+    list_nodes = create_node(data)
+    print(list_nodes)
+    list_nodes = sorted(list_nodes.items(), key = lambda x: x[1])
     tree = huffman_tree()
-    # sort data and make it into a tree
-    #tree.append(createnode(data))
-    return tree
+    # I think I might just be able to use heapq -_-
+ 
+    
+    
+        
+     #   huffman_tree.insert(j)
+        
+    return list_nodes
 def create_node(data):
     #input: given data, usually a sentence
     #output: node objects used to build a tree
@@ -75,16 +74,15 @@ def create_node(data):
     letterlist = []
     all_nodes = dict()
     for i in data:
-        if i not in letterlist:
+        if i not in letterlist and i != ' ':
             letterlist.append(i)
             # i-th node is in the all_nodes list
-            all_nodes[i] = node_huffman(str(i))
+            all_nodes[i] = 1
             
-        else:
-            cur_node = all_nodes[i]
-            cur_node.weight += 1
+        elif i in letterlist:
+            all_nodes[i] += 1
             
-    return all_nodes, letterlist
+    return all_nodes
 
 
 def huffman_decoding(data,tree):
@@ -92,7 +90,7 @@ def huffman_decoding(data,tree):
     pass
 
 data = 'I am a big giant tree'
-#print(createnode(data))
+print(huffman_encoding(data))
 '''
 if __name__ == "__main__":
     codes = {}
@@ -112,4 +110,5 @@ if __name__ == "__main__":
     print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
     print ("The content of the encoded data is: {}\n".format(decoded_data))
 '''
-print(create_node(data))
+
+
