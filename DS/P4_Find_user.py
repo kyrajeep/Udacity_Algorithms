@@ -1,7 +1,7 @@
 # Given a group with subgroups and users represented
 # as string ID's write a function to check if a 
 # user is in the group.
-# Each group is like a node and is the user in the node?
+# note to self: Each group is like a node and is the user in the node?
 
 class Group(object):
     def __init__(self, _name):
@@ -16,6 +16,8 @@ class Group(object):
         self.users.append(user)
 
     def get_groups(self):
+        # reminder: if you need to access an attribute 
+        # of a class you can always write a getter! :D
         return self.groups
 
     def get_users(self):
@@ -23,8 +25,6 @@ class Group(object):
 
     def get_name(self):
         return self.name
-
-
 
 
 def is_user_in_group(user, group):
@@ -47,6 +47,7 @@ def is_user_in_group(user, group):
             return True
     return False
     
+#Test Case 1: one subgroup per supergroup with one user each
 
 parent = Group("parent")
 child = Group("child")
@@ -59,7 +60,43 @@ child.add_user('hello_user')
 child.add_group(sub_child)
 parent.add_group(child)
 
-#make a test case
+# Expected Values: True
 print(is_user_in_group("sub_child_user", parent))
 print(is_user_in_group("hello_user", parent))
+# # Expected Value: False
+
 print(is_user_in_group("hello_user", sub_child))
+
+# Test Case 2
+
+Mammals = Group("Mammals")
+Felines = Group("Felines")
+Lions = Group("Lions")
+Cats = Group("Cats")
+Dogs = Group("Dogs")
+
+# Mammals have subgroups Cats, Dogs, and Lions
+Mammals.add_group(Cats)
+Mammals.add_group(Lions)
+Felines.add_group(Cats)
+Felines.add_group(Lions)
+
+Lions.add_user("Simba")
+Cats.add_user("Orie")
+Cats.add_user("Effie")
+Cats.add_user("Immi")
+
+# Expected Value: True
+print(is_user_in_group("Immi", Mammals))
+# False
+print(is_user_in_group("Immi", Lions))
+# True
+print(is_user_in_group("Orie", Mammals))
+# False. Checks if an empty subgroup is ok
+print(is_user_in_group("Orie", Dogs))
+
+
+#Test Case 3: the group is empty
+Horses = Group("Horses")
+# Expected Value: False
+print(is_user_in_group("Orie", Horses))
