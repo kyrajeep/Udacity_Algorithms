@@ -35,7 +35,6 @@ class LRU(object):
         if self.iscapacity() == True:
             self.remove_least()
         self.cache.update({key:value})
-        self.capacity += 1
         
         return self.cache
     
@@ -50,14 +49,15 @@ class LRU(object):
 
     def iscapacity(self):
         # checks the length of the dictionary if it is at capacity.
+        #print(len(self.cache))
         if len(self.cache) == self.capacity:
-            print("at capacity")
+            
             return True
-        elif len(self.cache) <= self.capacity:
-            print("under capacity")
+        elif len(self.cache) < self.capacity:
+           
             return False
         else:
-            print("Error: over capcity")
+            
             return False
   
 if __name__=="__main__":
@@ -71,8 +71,8 @@ if __name__=="__main__":
     # expected: -1 because 30 is not in the cache.
     print(test_lru.get_cache(30))
     # expected: True
-    test_lru.iscapacity()
-    # expected: 23
+    print(test_lru.iscapacity())
+    # expected: with 23: 7 removed
     print(test_lru.remove_least())
     print(test_lru.set_cache(30, 1000))
     # expected : 30
