@@ -14,7 +14,7 @@
 
 class LRU(object):
     def __init__(self, capacity, cache):
-        self.capacity = 0
+        self.capacity = capacity
         self.cache = {}
 
     def remove_least(self):
@@ -51,13 +51,10 @@ class LRU(object):
         # checks the length of the dictionary if it is at capacity.
         #print(len(self.cache))
         if len(self.cache) == self.capacity:
-            
             return True
         elif len(self.cache) < self.capacity:
-           
             return False
         else:
-            
             return False
   
 if __name__=="__main__":
