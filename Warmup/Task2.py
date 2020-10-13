@@ -23,20 +23,22 @@ September 2016.".
 
 
 def combine(calls):
-    # add a key to a dictionary
-# each time the phone number appears, increment the value.
-# input: calls data, output: phone number with the longest time.
+
+# input: calls data
+#output: phone number with the longest time (receiving + calling).
     duration = {}
     for call in calls:
         number = 0
-        duration = funct(call, number, duration)
+        duration = calc_dur(call, number, duration)
         number = 1
-        duration = funct(call, number, duration)   
+        duration = calc_dur(call, number, duration)   
     result_key = max(duration, key = lambda x: duration[x])
     result_value = duration[result_key]
     return result_key, result_value
 
-def funct(call, number, duration):
+def calc_dur(call, number, duration):
+    # a helper function to calculate duration and add
+    # the key and increment value in the dictionary.
     if call[number] not in duration.keys():
         duration[call[number]] = int(call[3])
     elif call[number] in duration.keys():
