@@ -110,14 +110,15 @@ def bangalore(calls):
     '''
     counts the number of from Bangalore to Bangalore calls and calculates the percentage
     '''
-    bangalore_num = 0
+    bangalore_tofrom = bangalore_other = 0
     for item in calls:
-        
         if item[0].startswith('(080)') and item[1].startswith('(080)'):
-            bangalore_num += 1
-    return bangalore_num / len(calls) * 100
-
+            bangalore_tofrom += 1
+            
+        elif item[0].startswith('(080)') and '(080)' not in item[1]:
+            bangalore_other += 1
+    return (float(bangalore_tofrom)/(bangalore_other+bangalore_tofrom) * 100)
 if __name__ == "__main__":
     print("The numbers called by people in Bangalore have codes:")
     printline()
-    print(str("{0:.2f}".format(bangalore(calls))) + " percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.")
+    print("{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(bangalore(calls), "f"))
