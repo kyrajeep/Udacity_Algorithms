@@ -72,7 +72,7 @@ def areacode(bangalore):
         elif phone_n.startswith('7' or '8' or '9'):
             
             end = iter_mobile(phone_n)
-            temp = phone_n[0:end]
+            temp = phone_n[0:end-1]
             if temp not in code_list:
                 code_list.append(temp) 
         else:
@@ -87,8 +87,8 @@ def iter_fixed(phone_n):
     i = 0
     while phone_n[i] != ")":
     
-        i = i+ 1
-    return i
+        i = i + 1
+    return i 
 def iter_mobile(phone_n):
     # extracting area code for mobile numbers
     i=0
