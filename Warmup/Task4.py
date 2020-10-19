@@ -73,12 +73,18 @@ def test1():
 test_outgoing = ['9817 2947', '2398 1209']
 test_text = ['1935 2093', '1947 0295', '9817 2947']
 
-test_incoming = ['1935 2093', '1947 0295', '2398 1209']
 # test1: expected answer = ['2398 1209']
 print(identify(test_outgoing, test_text))
 
-
-# test2: expected answer = [], need a different test set
-combined = combine(test_incoming, test_text)
+text_t2 = [['2398 1209', '1982 1846'], ['1982 8369', '1991 8471', '1985 7301'], ['0192 9381', '1935 0913']]
+t2 = [['1498 1982', '9817 2947'], ['1957 1950', '1957 9284']]
+# test2: expected answer = []
+combined = combine(text_t2, t2)
+#print(combined)
 print(identify(test_outgoing, combined))
 
+# test3: expected answer = ['2398 1209']
+text_t2 = [['2310 1209', '1982 1846'], ['1982 8369', '1991 8471', '1985 7301'], ['0192 9381', '1935 0913']]
+t2 = [['1498 1982', '9817 2947'], ['1957 1950', '1957 9284']]
+combined2 = combine(text_t2, t2)
+print(identify(test_outgoing, combined2))
