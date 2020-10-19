@@ -1,6 +1,5 @@
 """
 Read file into texts and calls.
-It's ok if you don't understand how to read files.
 """
 import csv
 
@@ -13,7 +12,7 @@ with open('calls.csv', 'r') as f:
     calls = list(reader)
 
 """
-TASK 4:
+TASK 4 Problem Statement:
 The telephone company want to identify numbers that might be doing
 telephone marketing. Create a set of possible telemarketers:
 these are numbers that make outgoing calls but never send texts,
@@ -26,29 +25,17 @@ The list of numbers should be print out one per line in lexicographic order with
 """
 
 # brainstorm:
-# I can identify numbers that have outgoing calls but no texts or incoming calls
-# text data and call data are separate. Can I merge them together? Is there a better way?
-# fix outgoing calls-> check if I can find them anywhere in the message data.
-# save the list, and check with the receiving call data.
-# question: how do I check the result?
-def outgoing(calls):
-# I think I need to loop through all the outgoing call list. is there a better way?
-# Can I recycle the outgoing call list from previous tasks? If yes, how? I need to pass it in the parameter. Put on Git repo and ask a question. call_list1 to Task4.
-# The function loops through the outgoing call list, check with the text list
-    outgoing = []
-    for call in calls:
-        # this for loop creates a list of numbers making outgoing calls.
-        if call[0] not in outgoing:
-            outgoing.append(call[0])
-    
-    return outgoing
-    
-def text(texts, calls):
+# I can identify numbers that have outgoing calls but no texts or 
+# incoming calls
+
+def combine(texts, calls):
     # this function aggregates a list of incoming calls and all text message numbers
     # if they are not duplicates.
+    # input: texts data and calls data
+    # output: aggregated list
     checklist = []
     for text in texts:
-        if text[0] not in checklist: 
+        if text[0] not in checklist:
             checklist.append(text[0])
         if text[1] not in checklist:
             checklist.append(text[1])
@@ -57,27 +44,41 @@ def text(texts, calls):
             checklist.append(call[1])
     return checklist
 
-    
-def identify(texts):
+
+def identify(outgoing, checklist):
     # this function compares the list of outgoing call numbers with the compiled
     # list of texts and incoming calls.
+    # input: outgoing calls and a combined list of texts and incoming calls
+    # output: potential marketing numbers
     marketing = []
-    outgoings = outgoing(calls)
-    textnumber = text(texts, calls)
-    for call in outgoings:
-        if call not in textnumber:
+
+    for call in outgoing:
+        if call not in checklist:
             marketing.append(call)
     return marketing
 
+
+'''
 def test1():
     # this is a test to see if there are any identified marketing numbers in the list
     # that is not supposed to be marketing numbers.
     try: 
-        identify(texts) in text(texts, calls)
+        identify() in text()
     except: 
         print("There is an error.")
     finally:
         print("The error check is finished.")
+'''
+# test dataset
+test_outgoing = ['9817 2947', '2398 1209']
+test_text = ['1935 2093', '1947 0295', '9817 2947']
 
-#test1()
-print(identify(texts))
+test_incoming = ['1935 2093', '1947 0295', '2398 1209']
+# test1: expected answer = ['2398 1209']
+print(identify(test_outgoing, test_text))
+
+
+# test2: expected answer = [], need a different test set
+combined = combine(test_incoming, test_text)
+print(identify(test_outgoing, combined))
+
