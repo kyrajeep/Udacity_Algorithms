@@ -1,13 +1,18 @@
 1.Task0
-Time Complexity-O(1): constant time because the list here works as an array because the data size is fixed. 
+Time Complexity-O(1): constant time because the runtime to access elements in a python array is constant.
 2. Task1
-Time complexity: O(n) because of the for loops.
+Time complexity: O(n) because the for loop goes through the input data linearly.
 3. Task2
 This program is run in O(n) time because it has two separate for loops that go through the entire list.
+
 4. Task3
 PartA
-# RUNTIME ANALYSIS: The whole program is run in O(nlog(n)) time 
+# RUNTIME ANALYSIS: The whole program is run in O(nlog(n)) time because 'sorted()' in Python is used and this function is a type of merge sort.
+
 PartB
-# Time complexity: O(n)
+# Time complexity: O(n) because the function goes through 'calls' data linearly.
+
+
 5.Task4
-# time complexity: O(n) as there are for loops used but there is no nested for loop.
+# time complexity: O(n) 
+Both 'identify' and 'combine' functions run in O(n), n being the size of the input data.
