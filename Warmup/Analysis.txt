@@ -14,5 +14,5 @@ PartB
 
 
 5.Task4
-# time complexity: O(n) 
-Both 'identify' and 'combine' functions run in O(n), n being the size of the input data.
+# time complexity: O(nlog(n)) 
+Both 'identify' and 'combine' functions run in O(n), n being the size of the input data.However, the Python 'sorted' function is used which makes the runtime nlog(n)
