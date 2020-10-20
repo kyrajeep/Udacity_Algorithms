@@ -28,6 +28,13 @@ The list of numbers should be print out one per line in lexicographic order with
 # I can identify numbers that have outgoing calls but no texts or 
 # incoming calls
 
+def list_outgoing(calls):
+    # output: list of phone numbers taht make outgoing calls
+    outgoing = []
+    for call in calls:
+        if call[0] not in outgoing:
+            outgoing.append(call[0])
+    return outgoing
 def combine(texts, calls):
     # this function aggregates a list of incoming calls and all text message numbers
     # if they are not duplicates.
@@ -88,3 +95,14 @@ text_t2 = [['2310 1209', '1982 1846'], ['1982 8369', '1991 8471', '1985 7301'], 
 t2 = [['1498 1982', '9817 2947'], ['1957 1950', '1957 9284']]
 combined2 = combine(text_t2, t2)
 print(identify(test_outgoing, combined2))
+
+
+# test 4: to test the 'list_outgoing' function
+# expected answer = ['1029 3975', '9393 8181']
+test = [['1029 3975', '1958 0319'], ['9393 8181', '9174 9292']]
+print(list_outgoing(test))
+
+
+outgoing = list_outgoing(calls)
+combined_final = combine(texts, calls)
+print("These numbers could be telemarketers: {}".format(sorted(identify(outgoing, combined_final))), sep='\n')
