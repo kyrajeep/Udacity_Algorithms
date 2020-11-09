@@ -1,7 +1,7 @@
 import sys
 '''
  huffman tree:
-1. nodes as weights. build a min heap. I am so excited.
+1. nodes as weights. build a min heap. 
 2. take out two smallest nodes
 3. combine them to make an internal node.
 '''
@@ -25,10 +25,7 @@ class huffman_tree:
         # the edges are represented as the children
         if self.root is None:
             self.root = node
-            self.heap_l.append(node)
-        else:
-            self.heap_l.append(node) 
-        
+                    
     def remove():
         self.heap_l.pop(index = 0)
         '''
@@ -49,22 +46,13 @@ class huffman_tree:
         
 '''        
 # solution
-def huffman_encoding(data):
-    
+def create_pqueue(data):
     #input: a string (data)
-    #output: encoded data and its tree
-    
+    #output: priority queue with nodes
     #convert the string into a list of nodes
     list_nodes = create_node(data)
     print(list_nodes)
     list_nodes = sorted(list_nodes.items(), key = lambda x: x[1])
-    tree = huffman_tree()
-    # I think I might just be able to use heapq -_-
- 
-    
-    
-        
-     #   huffman_tree.insert(j)
         
     return list_nodes
 def create_node(data):
@@ -84,14 +72,28 @@ def create_node(data):
             
     return all_nodes
 
-
+def huffman_encoding(data):
+    list_nodes = create_tree(data)
+    init_tree = list_nodes
+    while len(list_nodes) >= 3:
+        combined = ('combined', list_nodes[0][1] + list_nodes[1][1] )
+        list_nodes.pop(0)
+        list_nodes.pop(1)
+        list_nodes.append(combined)
+    last_combo = ('last_combo', list_nodes[0][1] + list_nodes[1][1] )
+    list_nodes.append(last_combo)
+    list_nodes.pop(0)
+    list_nodes.pop(1)
+    return list_nodes, init_tree
+    
 def huffman_decoding(data,tree):
     #output: decoded data
     pass
 
-data = 'I am a big giant tree'
-print(huffman_encoding(data))
-'''
+# test case 1
+#data = 'I am a big giant tree'
+#print(huffman_encoding(data))
+
 if __name__ == "__main__":
     codes = {}
 
@@ -105,10 +107,10 @@ if __name__ == "__main__":
     print ("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
     print ("The content of the encoded data is: {}\n".format(encoded_data))
 
-    decoded_data = huffman_decoding(encoded_data, tree)
+ #   decoded_data = huffman_decoding(encoded_data, tree)
 
-    print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print ("The content of the encoded data is: {}\n".format(decoded_data))
-'''
+ #   print ("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
+ #   print ("The content of the encoded data is: {}\n".format(decoded_data))
+
 
 

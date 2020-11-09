@@ -14,8 +14,6 @@ class LinkedList:
         
         if self.head is None:
             self.head = Node(value)
-            
-
         else:
             cur_node = Node(value)
             node = self.head

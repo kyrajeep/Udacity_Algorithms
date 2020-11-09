@@ -1,0 +1,1 @@
+I decided to use min heap because a linked list would take longer.

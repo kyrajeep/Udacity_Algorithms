@@ -34,13 +34,13 @@ def is_user_in_group(user, group):
     #Args:
      # user(str): user name/id
       #group(class:Group): group to check user membership against
-        
+    # base case    
     if user in group.get_users():
         return True
         
     group_list = group.get_groups()
     group_len = len(group_list)
-
+    # recursive call for each subgroup
     for i in range(group_len):
         result = is_user_in_group(user, group_list[i])
         if result == True:
