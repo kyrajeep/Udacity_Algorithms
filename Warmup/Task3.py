@@ -69,10 +69,10 @@ def areacode(bangalore):
             if temp not in code_list:
                 code_list.append(temp)
         
-        elif phone_n.startswith('7' or '8' or '9'):
+        elif phone_n.startswith(('7', '8', '9')):
             
             end = iter_mobile(phone_n)
-            temp = phone_n[0:end-1]
+            temp = phone_n[0:end-2]
             if temp not in code_list:
                 code_list.append(temp) 
         else:
