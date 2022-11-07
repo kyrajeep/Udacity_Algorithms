@@ -59,15 +59,16 @@ graph = [
 ]
 # hw4 figure 1
 # s: 0, u: 1, v:2, w:3, x:4, t:5
-graph1 = [[0, 8, 0, 0, 0, 0],
+graph1 = [[0, 10, 8, 0, 5, 0],
 [0, 0, 0, 3, 0, 5],
-[0, 0, 0, 0, 0, 0],
-[0, 0, 0, 0, 0, 3],
-[0, 0, 0, 0, 0, 0],
+[0, 3, 0, 10, 3, 0],
+[0, 0, 0, 0, 0, 8],
+[0, 0, 0, 3, 0, 10],
 [0, 0, 0, 0, 0, 0]]
+print(graph1)
 source = 0
 sink = 5
 flow = Graph(graph)
 flow1 = Graph(graph1)
 print(flow.ford_fulkerson(source, sink))
-print(flow.ford_fulkerson(source, sink))
+print(flow1.ford_fulkerson(source, sink))
